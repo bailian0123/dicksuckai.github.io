@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件下载中心</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .download-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .download-item:hover {
+            background-color: #f9f9f9;
+            border-color: #3498db;
+        }
+        .download-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #2980b9;
+        }
+        .file-info {
+            flex-grow: 1;
+        }
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .file-size {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .search-box {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>文件下载中心</h1>
+        
+        <input type="text" class="search-box" placeholder="搜索文件..." id="searchInput" onkeyup="searchFiles()">
+        
+        <div id="downloadList">
+            <!-- 示例文件1 -->
+            <div class="download-item">
+                <div class="file-info">
+                    <div class="file-name">产品手册.pdf</div>
+                    <div class="file-size">大小: 2.4 MB | 更新日期: 2023-10-15</div>
+                </div>
+                <a href="files/product_manual.pdf" class="download-btn" download>下载</a>
+            </div>
+            
+            <!-- 示例文件2 -->
+            <div class="download-item">
+                <div class="file-info">
+                    <div class="file-name">用户指南.docx</div>
+                    <div class="file-size">大小: 1.1 MB | 更新日期: 2023-09-28</div>
+                </div>
+                <a href="files/user_guide.docx" class="download-btn" download>下载</a>
+            </div>
+            
+            <!-- 示例文件3 -->
+            <div class="download-item">
+                <div class="file-info">
+                    <div class="file-name">安装程序.exe</div>
+                    <div class="file-size">大小: 15.7 MB | 更新日期: 2023-11-05</div>
+                </div>
+                <a href="files/setup.exe" class="download-btn" download>下载</a>
+            </div>
+            
+            <!-- 示例文件4 -->
+            <div class="download-item">
+                <div class="file-info">
+                    <div class="file-name">演示视频.mp4</div>
+                    <div class="file-size">大小: 45.2 MB | 更新日期: 2023-10-30</div>
+                </div>
+                <a href="files/demo_video.mp4" class="download-btn" download>下载</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchFiles() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const items = document.getElementById('downloadList').getElementsByClassName('download-item');
+            
+            for (let i = 0; i < items.length; i++) {
+                const fileName = items[i].getElementsByClassName('file-name')[0].textContent;
+                if (fileName.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
